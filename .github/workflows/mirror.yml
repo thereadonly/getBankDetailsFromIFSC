@@ -1,0 +1,28 @@
+name: Mirror Codeberg to GitHub
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codeberg repository
+        run: |
+          git clone https://codeberg.org/sdk/getBankDetailsFromIFSC
+          cd getBankDetailsFromIFSC
+        env:
+          CODEBERG_TOKEN: ${{ secrets.CDBRG_TKN }} #add cdbrg to mirror IFSC repo to be sure
+
+      - name: Push to GitHub
+        run: |
+          git remote add github https://thereadonly:${{ secrets.GTHB_TKN }}@github.com/thereadonly/getBankDetailsFromIFSC.git
+          git push --mirror github
+        working-directory: getBankDetailsFromIFSC # workdir makes it cleaner and reduces chances of error with cd
+        env:
+          GITHUB_TOKEN: ${{ secrets.GTHB_TKN }}
