@@ -1,20 +1,23 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Python WebAssembly App</title>
-        <script src="https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js"></script>
-        <script>
-            async function main() {
-                // Load Pyodide
-                let pyodide = await loadPyodide();
-                pyodide.setDebug(true);
+<meta charset="UTF-8" />
+<meta name="color-scheme" content="dark light" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-                await pyodide.loadPackage("texttable");
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="static/style.css" />
 
-                // Define Python script to fetch data from API and display it
-                let pythonCode = `
+<title>Python WebAssembly</title>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js"></script>
+<script>
+    async function main() {
+        // Load Pyodide
+        let pyodide = await loadPyodide();
+        pyodide.setDebug(true);
+
+        await pyodide.loadPackage("texttable");
+
+        // Define Python script to fetch data from API and display it
+        let pythonCode = `
 
             import asyncio
             import js,json
@@ -65,26 +68,40 @@
 
             `;
 
-                // Run the Python script
-                pyodide.runPythonAsync(pythonCode);
-            }
+        // Run the Python script
+        pyodide.runPythonAsync(pythonCode);
+    }
 
-            main();
-        </script>
-    </head>
-    <body>
-        <center id="centerTag">
-            <h1>Get Full Bank Details from IFSC</h1>
-            <input
-                required
-                type="text"
-                id="userInput"
-                minlength="11"
-                maxlength="11"
-                placeholder="IFSC Ex: SBIN0015615"
-            />
-            <button id="fetchButton" type="submit">Get Bank Details</button>
-            <p>The Bank Details will be displayed below:</p>
-        </center>
-    </body>
-</html>
+    main();
+</script>
+
+<center id="centerTag">
+    <h1>Get Full Bank Details from IFSC</h1>
+    <input
+        required
+        type="text"
+        id="userInput"
+        minlength="11"
+        maxlength="11"
+        placeholder="IFSC Ex: SBIN0015615"
+    />
+    <button id="fetchButton" type="submit">Get Bank Details</button>
+    <p>The Bank details will be displayed below:</p>
+</center>
+<footer>
+    <a class="links" href="https://dineshkumar.xyz">Handcrafted</a> _/\_ with ♥
+    and 🪲️ for the open web. Updated: 14Mar25<br />
+    Powered by: Python
+    <a class="links" href="https://pyodide.org">Pyodide</a>,
+    <a class="links" href="https://webassembly.org">WebAssembly</a> and
+    <a class="links" href="https://razorpay.com">Razorpay</a>. The
+    <a class="links" href="https://codeberg.org/sdk/getBankDetailsFromIFSC"
+        >code for this site</a
+    >
+    is
+    <a
+        class="links"
+        href="https://codeberg.org/sdk/getBankDetailsFromIFSC/src/branch/main/LICENSE"
+        >MIT Licensed</a
+    >.<br />
+</footer>
