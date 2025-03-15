@@ -5,10 +5,10 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 */12 * * *"
 
 jobs:
-  mirror:
+  mirror: # TODO: In future, test by running on containers - https://docs.github.com/en/actions/writing-workflows/choosing-where-your-workflow-runs/running-jobs-in-a-container
     runs-on: ubuntu-latest
 
     steps:

@@ -6,74 +6,16 @@
 <link rel="icon" href="data:," />
 <link rel="stylesheet" href="static/style.css" />
 
-<title>Python WebAssembly</title>
+<title>PyIFSC - Python & WebAssembly</title>
 <script src="https://cdn.jsdelivr.net/pyodide/v0.27.2/full/pyodide.js"></script>
-<script>
-    async function main() {
-        // Load Pyodide
-        let pyodide = await loadPyodide();
-        pyodide.setDebug(true);
-
-        await pyodide.loadPackage("texttable");
-
-        // Define Python script to fetch data from API and display it
-        let pythonCode = `
-
-            import asyncio
-            import js,json
-            from pyodide.http import pyfetch
-            from texttable import Texttable
-
-            async def fetch_data(user_ifsc):
-                url = f'https://ifsc.razorpay.com/{user_ifsc}'
-                response = await pyfetch(url)
-                json_data = await response.json()
-                js.console.log(json_data)
-
-                table = Texttable()
-                table.add_row(["Data", "Description"])  # Add header
-                for key, value in json_data.items():
-                    table.add_row([key, value])  # Add rows
-                # Display JSON data on the web page
-                document = js.document
-            #    pre = document.createElement('code')
-            #    pre.textContent = json.dumps(json_data, indent=4)
-            #    document.body.appendChild(pre)
-                pre = document.getElementById('jsonResult')
-                if pre is None:
-                    pre = document.createElement('pre')
-                    pre.id = 'jsonResult'
-            #        center = document.getElementById('centerTag')
-            #        center.appendChild(pre)
-                    document.querySelector('center').appendChild(pre)
-                pre.textContent = json.dumps(json_data, sort_keys=True,indent=4).replace('{','').replace('}','')
-            #    pre.textContent = table.draw()
-
-
-            # Run the fetch_data coroutine
-            # after we Get user input ifsc from JavaScript and to call fetch_data
-            def call_fetch_data(*args, **kwargs):
-                user_ifsc = js.document.getElementById('userInput').value
-                asyncio.ensure_future(fetch_data(user_ifsc))
-
-            #from js import document
-            #document.getElementById('fetchButton').addEventListener('click', call_fetch_data)
-
-            from js import document
-            from pyodide.ffi import create_proxy
-
-            # Create a proxy for the Python function
-            call_fetch_data_proxy = create_proxy(call_fetch_data)
-            document.getElementById('fetchButton').addEventListener('click', call_fetch_data_proxy)
-
-            `;
-
-        // Run the Python script
-        pyodide.runPythonAsync(pythonCode);
-    }
-
-    main();
-</script>
+<script src="static/fetchDetails.js"></script>
+<noscript>
+    <p>
+        Javascript is unavailable. JS is required for Pyodide WebAssembly to
+        work. So,Redirecting to home in few seconds.
+    </p>
+    <meta http-equiv="refresh" content="5;url=https://thereadonly.com/" />
+</noscript>
 
 <center id="centerTag">
     <h1>Get Full Bank Details from IFSC</h1>
