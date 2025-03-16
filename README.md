@@ -1,5 +1,5 @@
-## PyIFSC - get Bank Details from IFSC
-Get almost all details of any Indian Bank from its IFSC Code.
+## PyIFSC - get Bank details using IFSC
+Get almost all details of any Indian Bank from its [IFSC](https://en.wikipedia.org/wiki/Indian_Financial_System_Code).
 
 ### Why?
 An experimental project to test out WebAssembly using python,
@@ -16,10 +16,10 @@ page only for first load of the page based your network bandwidth.
 #### Hosted on CodeBerg. Mirrored by GitHub. Served by both
 1. https://sdk.codeberg.page/getBankDetailsFromIFSC
 2. https://thereadonly.github.io/getBankDetailsFromIFSC
+3. https://ifsc.thereadonly.com
 
-#### Rant
 Its funny, how github cannot see js and python used in the project
 if not separated by file type. Basically, the Language section on
 right of github repo page is blasphemous as it segregates projects
 based on filetype and not actual code used. So much for copilot,
-codespaces and dependabot being intelligent.
+codespaces and dependabot being so intelligent.
