@@ -1,11 +1,11 @@
-name: Mirror Codeberg to GitHub
+name: Make GitHub as mirror
 
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "33 3 * * */3"
 
 jobs:
   mirror: # TODO: In future, test by running on containers - https://docs.github.com/en/actions/writing-workflows/choosing-where-your-workflow-runs/running-jobs-in-a-container

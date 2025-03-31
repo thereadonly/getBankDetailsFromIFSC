@@ -18,7 +18,7 @@ page only for first load of the page based your network bandwidth.
 2. https://thereadonly.github.io/getBankDetailsFromIFSC
 3. https://ifsc.thereadonly.com
 
-Its funny, how github cannot see js and python used in the project
+Its funny, how github cannot see python used in the project
 if not separated by file type. Basically, the Language section on
 right of github repo page is blasphemous as it segregates projects
 based on filetype and not actual code used. So much for copilot,
