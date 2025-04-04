@@ -13,6 +13,11 @@ page only for first load of the page based your network bandwidth.
 2. Razorpay - https://razorpay.com/
 3. WebAssembly - https://webassembly.org/
 
+### Status
+1. Sync Status - [![Make GitHub as mirror](https://github.com/thereadonly/getBankDetailsFromIFSC/actions/workflows/mirror.yml/badge.svg)](https://github.com/thereadonly/getBankDetailsFromIFSC/actions/workflows/mirror.yml)
+2. Deployment Status - [![pages-build-deployment](https://github.com/thereadonly/getBankDetailsFromIFSC/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/thereadonly/getBankDetailsFromIFSC/actions/workflows/pages/pages-build-deployment)
+3. Uptime Status - https://status.thereadonly.com
+
 #### Hosted on CodeBerg. Mirrored by GitHub. Served by both
 1. https://sdk.codeberg.page/getBankDetailsFromIFSC
 2. https://thereadonly.github.io/getBankDetailsFromIFSC
