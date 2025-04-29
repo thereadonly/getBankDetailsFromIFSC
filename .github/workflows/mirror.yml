@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - main
-  worflow_dispatch:
+  workflow_dispatch:
   schedule:
-    - cron: "33 3 * * 3"
+    - cron: "53 7 * * *"
 
 jobs:
   mirror: # TODO: In future, test by running on containers - https://docs.github.com/en/actions/writing-workflows/choosing-where-your-workflow-runs/running-jobs-in-a-container
-    runs-on: ubuntu-latest
+    runs-on: self-hosted #ubuntu-latest for github owned VMs.
 
     steps:
       - name: Checkout Codeberg repository
@@ -27,3 +27,8 @@ jobs:
         working-directory: getBankDetailsFromIFSC # workdir makes it cleaner and reduces chances of error with cd
         env:
           GITHUB_TOKEN: ${{ secrets.GTHB_TKN }}
+
+      - name: Cleanup for next run #Required for self-hosted runners unlike github hosts which are fresh.
+        run: |
+          cd ..
+          rm -rf getBankDetailsFromIFSC
