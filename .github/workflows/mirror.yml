@@ -29,6 +29,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GTHB_TKN }}
 
       - name: Cleanup for next run #Required for self-hosted runners unlike github hosts which are fresh.
+        if: always()
         run: |
           cd ..
           rm -rf getBankDetailsFromIFSC
